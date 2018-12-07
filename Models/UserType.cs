@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
 {
     public class UserType
     {
-        public int UserTypeId { get; set; }
-        public UserTypesEnum Value { get; set; }
+        public int Id { get; set; }
+        public string Value { get; set; }
     }
 
     public enum UserTypesEnum

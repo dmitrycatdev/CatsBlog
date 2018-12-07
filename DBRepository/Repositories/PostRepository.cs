@@ -25,15 +25,5 @@ namespace DBRepository
             return result;
         }
 
-        public async Task<IEnumerable<Post>> GetPostsByUserId(int userId)
-        {
-            IEnumerable<Post> result;
-            using (var context = ContextFactory.CreateDbContext(ConnectionString))
-            {
-                var query = context.Posts.AsQueryable();
-                result = await query.Where(p => p.Id == userId).ToListAsync();
-            }
-            return result;
-        }
     }
 }

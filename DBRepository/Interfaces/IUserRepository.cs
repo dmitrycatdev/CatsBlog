@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DBRepository.Interfaces
 {
-    public interface IPostRepository
+    public interface IUserRepository
     {
-        Task<Post> GetPost(int postId);
+        Task<User> GetUser(int userId);
+        Task<IEnumerable<Post>> GetUsersPosts(int userId);
     }
 }
