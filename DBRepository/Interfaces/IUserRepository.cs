@@ -9,6 +9,6 @@ namespace DBRepository.Interfaces
     public interface IUserRepository
     {
         Task<User> GetUser(int userId);
-        Task<IEnumerable<Post>> GetUsersPosts(int userId);
+        Task<IEnumerable<Post>> GetUserPosts(int userId);
     }
 }

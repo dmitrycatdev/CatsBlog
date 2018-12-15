@@ -22,11 +22,17 @@ namespace CatsBlog.Controllers
             _postRepository = postRepository;
         }
 
-        [Route("{id}")]
         [HttpGet]
+        public async Task<IEnumerable<Post>> GetPosts()
+        {
+            return await _postRepository.GetPostsAsync();
+        }
+
+        [HttpGet("{postId}")]
         public async Task<Post> GetPost(int postId)
         {
-            return await _postRepository.GetPost(postId);
+            var result = await _postRepository.GetPostAsync(postId);
+            return result;
         }
     }
 }

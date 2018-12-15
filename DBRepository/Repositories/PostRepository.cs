@@ -14,13 +14,24 @@ namespace DBRepository
         public PostRepository(string connectionString, IRepositoryContextFactory contextFactory) 
             : base(connectionString, contextFactory) { }
 
-        public async Task<Post> GetPost(int postId)
+        public async Task<Post> GetPostAsync(int postId)
         {
             var result = new Post();
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
                 var query = context.Posts.AsQueryable();
                 result = await query.Where(p => p.Id == postId).SingleAsync();
+            }
+            return result;
+        }
+
+        public async Task<IEnumerable<Post>> GetPostsAsync()
+        {
+            IEnumerable<Post> result;
+            using (var context = ContextFactory.CreateDbContext(ConnectionString))
+            {
+                var query = context.Posts.AsQueryable();
+                result = await query.Where(p => p.Id > 0).ToListAsync();
             }
             return result;
         }

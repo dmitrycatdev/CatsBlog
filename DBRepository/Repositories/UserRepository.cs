@@ -26,7 +26,7 @@ namespace DBRepository.Repositories
             }
             return result;
         }
-        public async Task<IEnumerable<Post>> GetUsersPosts(int userId)
+        public async Task<IEnumerable<Post>> GetUserPosts(int userId)
         {
             IEnumerable<Post> result;
             using (var context = ContextFactory.CreateDbContext(ConnectionString))

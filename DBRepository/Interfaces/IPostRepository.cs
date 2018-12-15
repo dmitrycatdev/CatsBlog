@@ -8,6 +8,7 @@ namespace DBRepository.Interfaces
 {
     public interface IPostRepository
     {
-        Task<Post> GetPost(int postId);
+        Task<Post> GetPostAsync(int postId);
+        Task<IEnumerable<Post>> GetPostsAsync();
     }
 }
