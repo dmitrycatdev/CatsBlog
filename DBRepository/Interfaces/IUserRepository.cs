@@ -8,7 +8,8 @@ namespace DBRepository.Interfaces
 {
     public interface IUserRepository
     {
-        Task<User> GetUser(int userId);
+        Task<User> Get(int userId);
         Task<IEnumerable<Post>> GetUserPosts(int userId);
+        Task<User> GetByAccount(string login, string password);
     }
 }

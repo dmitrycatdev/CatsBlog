@@ -20,7 +20,7 @@ namespace DBRepository
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
                 var query = context.Posts.AsQueryable();
-                result = await query.Where(p => p.Id == postId).SingleAsync();
+                result = await query.Where(p => p.Id == postId).SingleOrDefaultAsync();
             }
             return result;
         }

@@ -22,9 +22,9 @@ namespace CatsBlog.Controllers
 
         [Route("{id}")]
         [HttpGet]
-        public async Task<User> GetUser(int userId)
+        public async Task<User> GetUser(int id)
         {
-            return await _userRepository.GetUser(userId);
+            return await _userRepository.Get(id);
         }
     }
 }
