@@ -87,5 +87,4 @@ export default class AuthService {
         }
     }
 }
-const root = 'https://localhost:44362/';
 

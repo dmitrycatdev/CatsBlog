@@ -3,12 +3,14 @@ import { LeftMenu } from './menu/LeftMenu'
 import { TopMenu } from './menu/TopMenu'
 
 
-export class Main extends React.Component {
+
+export class About extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        return <p className="h1">Main</p>
+        return <p className="h1">About</p>
+
     }
 }
