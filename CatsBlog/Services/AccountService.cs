@@ -15,7 +15,7 @@ namespace CatsBlog.Services
 {
     public interface IAccountService
     {
-        Task<User> Authenticate(string username, string password);
+        Task<AuthUser> Authenticate(string username, string password);
     }
 
     public class AccountService : IAccountService
@@ -29,29 +29,37 @@ namespace CatsBlog.Services
             _userRepository = userRepository;
         }
 
-        public async Task<User> Authenticate(string login, string password)
+        public async Task<AuthUser> Authenticate(string login, string password)
         {
             var user = await _userRepository.GetByAccount(login, password);
             if (user == null)
                 return null;
-
+            var result = new AuthUser()
+            {
+                Id = user.Id,
+                Login = user.Login,
+                Password = user.Password,
+                UserTypeId = user.UserTypeId,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, result.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
+            result.Token = tokenHandler.WriteToken(token);
 
             user.Password = null;
 
-            return user;
+            return result;
         }
     }
 }

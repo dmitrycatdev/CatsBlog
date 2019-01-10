@@ -40,10 +40,10 @@ namespace CatsBlog.Controllers
         }
 
         [HttpGet("me")]
-        public async Task<IActionResult> GetUserByToken()
+        public async Task<IActionResult> GetCurrentUser()
         {
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var user = await _userRepository.Get(int.Parse(userId));
+            int userId = int.Parse(User.Identity.Name);
+            var user = await _userRepository.Get(userId);
 
             return Ok(user);
         }
