@@ -38,7 +38,6 @@ namespace CatsBlog.Services
             {
                 Id = user.Id,
                 Login = user.Login,
-                Password = user.Password,
                 UserTypeId = user.UserTypeId,
                 FirstName = user.FirstName,
                 LastName = user.LastName

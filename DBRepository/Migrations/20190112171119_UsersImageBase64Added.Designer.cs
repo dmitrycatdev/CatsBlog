@@ -4,14 +4,16 @@ using DBRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBRepository.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20190112171119_UsersImageBase64Added")]
+    partial class UsersImageBase64Added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,7 +67,7 @@ namespace DBRepository.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<string>("ImageUrl");
+                    b.Property<string>("ImageBase64");
 
                     b.Property<string>("LastName");
 

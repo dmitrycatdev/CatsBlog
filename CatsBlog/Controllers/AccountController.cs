@@ -45,7 +45,14 @@ namespace CatsBlog.Controllers
             int userId = int.Parse(User.Identity.Name);
             var user = await _userRepository.Get(userId);
 
-            return Ok(user);
+            return Ok(new
+            {
+                user.Id,
+                user.Login,
+                user.UserTypeId,
+                user.FirstName,
+                user.LastName
+            });
         }
     }
 }
