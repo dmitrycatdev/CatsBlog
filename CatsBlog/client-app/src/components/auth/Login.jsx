@@ -36,7 +36,7 @@ export default class Login extends React.Component {
 
         this.Auth.login(this.state.login, this.state.password)
             .then(res => {
-                this.props.history.replace('/');
+                this.props.history.replace('/root/main');
             })
             .catch(err => {
                 this.setState({ errorMessage: 'Неправильный логин или пароль' });
@@ -47,7 +47,7 @@ export default class Login extends React.Component {
         let { login, password, errorMessage } = this.state;
 
         if (this.Auth.loggedIn())
-            return <Redirect to='/feed' />
+            return <Redirect to='/root' />
 
         return <div className="container">
             <div className="row justify-content-center">

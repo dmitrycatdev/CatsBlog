@@ -19,13 +19,13 @@ export class TopMenu extends React.Component {
                         height={55}
                         className="d-inline-block align-top"/>
                 </a>
-                <span className="navbar-brand mb-0 h1">{user.firstName} {user.lastName && user.lastName}</span>
+                <span className="navbar-brand mb-0 h1">{user.firstName || 'null'} {user.lastName && user.lastName}</span>
                 <form className="form-inline">
                     <input className="form-control mr-sm-3" type="search" placeholder="Поиск.." aria-label="Search" />
                     <button
                         onClick={() => this.Auth.logout()}
                         className="btn btn-outline-info  my-3 my-sm-0"
-                        style={{marginLeft: 30}}>Выйти</button>
+                        style={{ marginLeft: 30 }}>Выйти </button>
                 </form>
 
              </nav>

@@ -1,22 +1,24 @@
 ﻿import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink  } from 'react-router-dom'
 
 export class LeftMenu extends React.Component {
 
     render() {
-        return <div className="left-menu col-3">
+        return <div className="left-menu col-3" style={{height: '100%'}}>
             <ul>
                 <li>
-                    <Link to='/root'>MAIN </Link>
+                    <NavLink activeClassName='active' to='/root/main'><i className="fas fa-home"></i> Главная</NavLink>
                 </li>
                 <li>
-                    <Link to='/root/about' >ABOUT </Link>
+                    <NavLink activeClassName='active' to='/root/chat' >
+                        <i className="fas fa-exclamation-circle"></i> Чат
+                    </NavLink>
                 </li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
+                <li>
+                    <NavLink activeClassName='active' to='/root/about' >
+                        <i className="fas fa-exclamation-circle"></i> О сервисе
+                    </NavLink>
+                </li>
             </ul>
         </div>
     }

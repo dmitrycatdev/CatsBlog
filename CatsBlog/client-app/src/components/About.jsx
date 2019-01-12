@@ -1,6 +1,4 @@
 ﻿import React, { Fragment } from 'react';
-import { LeftMenu } from './menu/LeftMenu'
-import { TopMenu } from './menu/TopMenu'
 
 
 

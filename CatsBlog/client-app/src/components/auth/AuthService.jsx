@@ -20,7 +20,7 @@ export default class AuthService {
     logout() {
 
         localStorage.clear();
-        window.location.replace('/');
+        window.location.replace('/login');
     }
 
     fetch(url, method, data = null) {
@@ -87,4 +87,3 @@ export default class AuthService {
         }
     }
 }
-

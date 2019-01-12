@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect, IndexRoute  } from 'react-router-dom'
 import { Root } from './components/Root.jsx'
 import Login from './components/auth/Login'
 import AuthService from './components/auth/AuthService'
@@ -10,8 +10,8 @@ import { Main } from './components/Main'
 
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.Auth = new AuthService();
     }
@@ -19,18 +19,17 @@ class App extends Component {
     render() {
         var { user } = this.props;
         return (
-            <BrowserRouter >
-                <div>
-                    <Route path='/root' render={() => <Root />} >
-                        <Switch>
-                            <Route path='/root' component={Main} />
-                            <Route path='/root/about' component={About} />
-                        </Switch>
-                    </Route>
-                    <Route path='/login' component={Login} />
-                </div>
-            </BrowserRouter >       
+            <BrowserRouter>
+                <Fragment>
+                    {
+                        window.location.pathname == '/' &&  <Redirect push to='/root' />
+                    }
+                    <Route path='/root' component={Root} />
+                    <Route exact path='/login' component={Login} />
+                </Fragment>
+            </BrowserRouter>
         );
+            
     }
 }
 
