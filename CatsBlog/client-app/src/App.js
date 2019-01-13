@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Redirect, IndexRoute  } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect  } from 'react-router-dom'
 import { Root } from './components/Root.jsx'
 import Login from './components/auth/Login'
 import AuthService from './components/auth/AuthService'
-import { Container } from './components/Container'
-import { About } from './components/About'
-import { Main } from './components/Main'
+import { Landing } from './components/Landing'
+
 
 
 class App extends Component {
@@ -18,14 +17,16 @@ class App extends Component {
 
     render() {
         var { user } = this.props;
+        var redirectTo = this.Auth.loggedIn() ? '/root' : '/landing';
         return (
             <BrowserRouter>
                 <Fragment>
                     {
-                        window.location.pathname == '/' &&  <Redirect push to='/root' />
+                        window.location.pathname == '/' && <Redirect push to={redirectTo} />
                     }
                     <Route path='/root' component={Root} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/landing' component={Landing} />
                 </Fragment>
             </BrowserRouter>
         );

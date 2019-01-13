@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import { Link, NavLink  } from 'react-router-dom'
+import { NavLink  } from 'react-router-dom'
 
 export class LeftMenu extends React.Component {
 
@@ -11,7 +11,7 @@ export class LeftMenu extends React.Component {
                 </li>
                 <li>
                     <NavLink activeClassName='active' to='/root/chat' >
-                        <i className="fas fa-exclamation-circle"></i> Чат
+                        <i className="far fa-envelope"></i> Чат
                     </NavLink>
                 </li>
                 <li>
