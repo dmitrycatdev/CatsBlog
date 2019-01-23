@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import AuthService from './AuthService.jsx'
+import AuthService from './AuthService'
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 

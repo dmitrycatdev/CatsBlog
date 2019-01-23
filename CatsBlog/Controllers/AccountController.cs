@@ -51,7 +51,8 @@ namespace CatsBlog.Controllers
                 user.Login,
                 user.UserTypeId,
                 user.FirstName,
-                user.LastName
+                user.LastName,
+                user.ImageUrl
             });
         }
     }

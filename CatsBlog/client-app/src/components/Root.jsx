@@ -1,4 +1,5 @@
-﻿import React, { Fragment } from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router'
 import { Circle } from 'react-preloaders';
 import AuthService from './auth/AuthService'
@@ -23,18 +24,17 @@ export class Root extends React.Component {
     }
 
     componentDidMount() {
+        var self = this;
         this.Auth.fetch("/api/auth/me", 'get')
             .then(res => {
-                this.setState({
-                    isLoaded: true,
-                    user: res
-                });
+                self.props.setUserInfo(res)
+                this.setState({isLoaded: true})
             })
     }
 
     render() {
-        let { isLoaded, user } = this.state;
-        
+        var { isLoaded, user } = this.state;
+        var { user } = this.props;
         if (!isLoaded) {
             return <Circle
                 color={"#000"}
@@ -49,7 +49,7 @@ export class Root extends React.Component {
                     <LeftMenu />
                     <div className="col-9">
                         <Switch>
-                            <Route path='/root/main' component={Main} />
+                            <Route path='/root/main' render={() => <Main user={user} />} />
                             <Route path='/root/chat' component={Chat} />
                             <Route path='/root/about' component={About} />
                         </Switch>
@@ -58,4 +58,9 @@ export class Root extends React.Component {
             </div>
         </Fragment>
     }
+}
+
+Root.propTypes = { 
+    user: PropTypes.object.isRequired,
+    setUserInfo: PropTypes.func.isRequired
 }
